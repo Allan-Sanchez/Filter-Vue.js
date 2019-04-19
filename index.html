@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Components</title>
+</head>
+<body>
+    <div id="app" class="container">
+        <users></users>
+        
+    </div>
+    <template id="usersTemplate">
+        <div>
+            <div class="row mt-3">
+                <div class="col-md-6 offset-3">
+                    <h1 class="text-center">Bussines Users</h1>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="search" id="search" placeholder="Search" v-model="searchUser">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+
+                <user :data="user" v-for="(user, index) in searchUsers" :key="index"></user>
+            </div>
+        </div>
+    </template>
+
+    <template id="userTemplate">
+            <div class="card m-2" style="width: 350px;">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img :src="data.photo" class="card-img" alt="data.name">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{data.name}}</h5>
+                      <p class="card-text">{{data.email}}</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                </div>
+            </div>                                          
+    </template> 
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
